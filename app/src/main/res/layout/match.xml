@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:orientation="vertical">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="66dp"
         android:weightSum="1">
 
         <TextView
@@ -14,8 +15,8 @@
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="1"
-            android:id="@+id/standing"
-            android:layout_margin="10dp"
+            android:id="@+id/betResult"
+            android:layout_margin="5dp"
             android:textAlignment="gravity"
             android:singleLine="true"
             android:textSize="40dp"
@@ -42,7 +43,7 @@
                     android:id="@+id/homeScore"
                     android:layout_column="0"
                     android:textStyle="bold"
-                    android:textSize="25dp"
+                    android:textSize="22dp"
                     android:paddingRight="8dp" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,7 +52,7 @@
                     android:text="Queens Park Rangers"
                     android:id="@+id/homeTeamName"
                     android:layout_column="1"
-                    android:textSize="25dp"/>
+                    android:textSize="22dp"/>
             </TableRow>
 
             <TableRow
@@ -67,7 +68,7 @@
                     android:id="@+id/awayScore"
                     android:layout_column="0"
                     android:textStyle="bold"
-                    android:textSize="25dp"/>
+                    android:textSize="22dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,9 +76,39 @@
                     android:text="Manchester United"
                     android:id="@+id/awayTeamName"
                     android:layout_column="1"
-                    android:textSize="25dp"/>
+                    android:textSize="22dp"/>
             </TableRow>
         </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="X"
+            android:id="@+id/standing"
+            android:layout_column="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="5"
+            android:drawableLeft="@drawable/coin"
+            android:drawablePadding="4dp"
+            android:id="@+id/stakes"
+            android:layout_column="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="16dp"/>
 
     </LinearLayout>
 </LinearLayout>

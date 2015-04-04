@@ -2,6 +2,7 @@ package risto.pling2.matches;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,19 +21,19 @@ public class MatchAdapter extends BaseAdapter {
     private List<Match> matches = new ArrayList<>();
 
     {
-        matches.add(new Match('1', "Chelsea", "Stoke"));
-        matches.add(new Match('2', "Everton", "Southhampton"));
-        matches.add(new Match('2', "Liecester", "West Ham"));
-        matches.add(new Match('X', "Manchester United", "Aston Villa"));
-        matches.add(new Match('1', "Swansea", "Hull"));
-        matches.add(new Match('1', "West Bromwich", "Queens Park Rangers"));
-        matches.add(new Match('X', "Bolton", "Blackpool"));
-        matches.add(new Match('1', "Leeds", "Blackburn"));
-        matches.add(new Match('2', "Reading", "Cardiff"));
-        matches.add(new Match('2', "Sheffield W", "Huddersfield"));
-        matches.add(new Match('1', "Hamilton", "St Johnston"));
-        matches.add(new Match('1', "Kilmarnoc", "Mothersw"));
-        matches.add(new Match('X', "Kalmar FF", "Helsingborg"));
+        matches.add(new Match(MatchResult.I, "Chelsea", "Stoke"));
+        matches.add(new Match(MatchResult.II, "Everton", "Southhampton"));
+        matches.add(new Match(MatchResult.II, "Liecester", "West Ham"));
+        matches.add(new Match(MatchResult.X, "Manchester United", "Aston Villa"));
+        matches.add(new Match(MatchResult.X, "Swansea", "Hull"));
+        matches.add(new Match(MatchResult.I, "West Bromwich", "Queens Park Rangers"));
+        matches.add(new Match(MatchResult.X, "Bolton", "Blackpool"));
+        matches.add(new Match(MatchResult.I, "Leeds", "Blackburn"));
+        matches.add(new Match(MatchResult.II, "Reading", "Cardiff"));
+        matches.add(new Match(MatchResult.II, "Sheffield W", "Huddersfield"));
+        matches.add(new Match(MatchResult.I, "Hamilton", "St Johnston"));
+        matches.add(new Match(MatchResult.I, "Kilmarnoc", "Mothersw"));
+        matches.add(new Match(MatchResult.X, "Kalmar FF", "Helsingborg"));
     }
 
     private final Activity activity;
@@ -61,8 +62,8 @@ public class MatchAdapter extends BaseAdapter {
         Match match = matches.get(position);
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.match, null);
-        TextView standing = (TextView) v.findViewById(R.id.standing);
-        standing.setText(String.valueOf(match.getStanding()));
+        TextView result = (TextView) v.findViewById(R.id.betResult);
+        result.setText(String.valueOf(match.getBetResult().getSymbol()));
         TextView homeScore = (TextView) v.findViewById(R.id.homeScore);
         homeScore.setText(String.valueOf(match.getHomeScore()));
         TextView homeTeamName = (TextView) v.findViewById(R.id.homeTeamName);
@@ -71,6 +72,13 @@ public class MatchAdapter extends BaseAdapter {
         awayScore.setText(String.valueOf(match.getAwayScore()));
         TextView awayTeamName = (TextView) v.findViewById(R.id.awayTeamName);
         awayTeamName.setText(match.getAwayTeam());
+        TextView standing = (TextView) v.findViewById(R.id.standing);
+        standing.setText(String.valueOf(match.getStanding().getSymbol()));
+        TextView stakes = (TextView) v.findViewById(R.id.stakes);
+        stakes.setText(String.valueOf(match.getStakes()));
+        if (match.getBetResult() == match.getStanding()) {
+            v.setBackgroundColor(Color.argb(255, 200, 255, 200));
+        }
         return v;
     }
 }
